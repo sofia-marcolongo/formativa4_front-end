@@ -55,3 +55,15 @@ async function atualizarStatusPedido(id, novoStatus) {
   if (!response.ok) throw new Error(dados.erro || `Erro ${response.status}`);
   return dados;
 }
+
+
+async function cadastrarProduto(dados) {
+  const response = await fetch(`${BASE_URL}/produtos`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(dados),
+  });
+  const resposta = await response.json();
+  if (!response.ok) throw new Error(resposta.erro || `Erro ${response.status}`);
+  return resposta;
+}
